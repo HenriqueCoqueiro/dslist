@@ -168,6 +168,8 @@ Move o jogo da posição `sourceIndex` para `destinationIndex` dentro da lista.
 
 ### Relacionamento
 
+![Diagrama do Projeto](docs/dslist-model.png)
+
 
 ---
 
