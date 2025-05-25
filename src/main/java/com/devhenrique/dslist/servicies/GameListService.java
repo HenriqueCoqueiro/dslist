@@ -25,7 +25,7 @@ public class GameListService {
         return gameListRepo.findAll().stream().map(GameListDto::new).toList();
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public void move(Long listId, int sourceIndex, int destinationIndex){
        List<GameMinProjection> list = gameRepo.searchByList(listId);
 
