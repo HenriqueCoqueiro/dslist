@@ -1,6 +1,6 @@
 # 🎮 DSList
 
-Backend em Java com Spring Boot para gerenciamento de listas personalizadas de jogos, com persistência via PostgreSQL, ambiente local com Docker Compose e deploy automatizado via Railway.
+Backend em Java com Spring Boot para gerenciamento de listas personalizadas de jogos, utilizando PostgreSQL para persistência em produção. Ambiente local configurado com Docker Compose para facilitar o desenvolvimento. Deploy automatizado com pipeline CI/CD implementado via Railway. Projeto simples, mas focado em aplicar e consolidar conhecimentos práticos em Docker, CI/CD e desenvolvimento backend.
 
 ---
 
