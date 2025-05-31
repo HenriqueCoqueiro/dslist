@@ -1,43 +1,45 @@
+---
+
 # 🎮 DSList
 
-Backend em Java com Spring Boot para gerenciamento de listas personalizadas de jogos, utilizando PostgreSQL para persistência em produção. Ambiente local configurado com Docker Compose para facilitar o desenvolvimento. Deploy automatizado com pipeline CI/CD implementado via Railway. Projeto simples, mas focado em aplicar e consolidar conhecimentos práticos em Docker, CI/CD e desenvolvimento backend.
+Backend developed in Java with Spring Boot for managing personalized game lists, using PostgreSQL for production persistence. The local environment is configured with Docker Compose to simplify development. Automated deployment is handled by a CI/CD pipeline implemented via Railway. This is a simple project focused on applying and consolidating practical knowledge in Docker, CI/CD, and backend development.
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 🛠️ Technologies Used
 
 * Java 17
 * Spring Boot
 * Spring Data JPA (Hibernate)
-* Banco H2 (testes)
-* PostgreSQL (produção)
+* H2 Database (for testing)
+* PostgreSQL (production)
 * Maven
 * Docker + Docker Compose
-* Railway (deploy com CI/CD)
+* Railway (CI/CD deployment)
 
 ---
 
-## 📌 Descrição
+## 📌 Description
 
-DSList é uma API REST que gerencia jogos e listas de jogos, permitindo operações como:
+DSList is a REST API that manages games and game lists, allowing operations such as:
 
-* Listar todos os jogos (com dados resumidos)
-* Consultar detalhes completos de um jogo
-* Listar todas as listas de jogos
-* Consultar jogos de uma lista específica
-* Reordenar jogos dentro de uma lista
+* List all games (with summary data)
+* Retrieve full details of a specific game
+* List all game lists
+* Retrieve games from a specific list
+* Reorder games within a list
 
-A aplicação está configurada para rodar com PostgreSQL em produção e H2 para testes locais, usando Docker Compose para ambiente local. O deploy é feito automaticamente com CI/CD pela plataforma Railway.
+The application is configured to run with PostgreSQL in production and H2 for local testing, using Docker Compose for the local environment. Deployment is automated with CI/CD via the Railway platform.
 
 ---
 
-## 📨 Endpoints da API
+## 📨 API Endpoints
 
 ### `GET /games`
 
-Retorna todos os jogos com dados mínimos.
+Returns all games with minimal data.
 
-**Exemplo de resposta:**
+**Example response:**
 
 ```json
 [
@@ -58,13 +60,13 @@ Retorna todos os jogos com dados mínimos.
 
 ### `GET /games/{id}`
 
-Retorna detalhes completos de um jogo específico.
+Returns full details of a specific game.
 
-**Parâmetros:**
+**Parameters:**
 
-* `id` (Long): ID do jogo
+* `id` (Long): Game ID
 
-**Exemplo de resposta:**
+**Example response:**
 
 ```json
 {
@@ -75,8 +77,8 @@ Retorna detalhes completos de um jogo específico.
   "platforms": "PC, PS4, Xbox One",
   "score": 9.5,
   "imgUrl": "https://example.com/witcher3.jpg",
-  "shortDescription": "RPG épico de mundo aberto.",
-  "longDescription": "The Witcher 3: Wild Hunt é um jogo de RPG desenvolvido pela CD Projekt RED..."
+  "shortDescription": "Epic open-world RPG.",
+  "longDescription": "The Witcher 3: Wild Hunt is an RPG developed by CD Projekt RED..."
 }
 ```
 
@@ -84,19 +86,19 @@ Retorna detalhes completos de um jogo específico.
 
 ### `GET /lists`
 
-Retorna todas as listas de jogos.
+Returns all game lists.
 
-**Exemplo de resposta:**
+**Example response:**
 
 ```json
 [
   {
     "id": 1,
-    "name": "Favoritos"
+    "name": "Favorites"
   },
   {
     "id": 2,
-    "name": "Zerados"
+    "name": "Completed"
   }
 ]
 ```
@@ -105,13 +107,13 @@ Retorna todas as listas de jogos.
 
 ### `GET /lists/{listId}/games`
 
-Retorna os jogos da lista especificada.
+Returns the games of the specified list.
 
-**Parâmetros:**
+**Parameters:**
 
-* `listId` (Long): ID da lista
+* `listId` (Long): List ID
 
-**Exemplo de resposta:**
+**Example response:**
 
 ```json
 [
@@ -132,13 +134,13 @@ Retorna os jogos da lista especificada.
 
 ### `POST /lists/{listId}/replacement`
 
-Reordena jogos dentro da lista.
+Reorders games within a list.
 
-**Parâmetros:**
+**Parameters:**
 
-* `listId` (Long): ID da lista
+* `listId` (Long): List ID
 
-**Body JSON:**
+**JSON Body:**
 
 ```json
 {
@@ -147,34 +149,33 @@ Reordena jogos dentro da lista.
 }
 ```
 
-Move o jogo da posição `sourceIndex` para `destinationIndex` dentro da lista.
+Moves the game from `sourceIndex` to `destinationIndex` within the list.
 
-**Resposta:**
+**Response:**
 
-* 204 No Content (sem corpo) em caso de sucesso.
+* 204 No Content on success.
 
 ---
 
-## 🗂️ Estrutura de Dados
+## 🗂️ Data Structure
 
-### Entidades principais
+### Main Entities
 
-| Entidade     | Campos principais                                                                   |
+| Entity       | Main Fields                                                                         |
 | ------------ | ----------------------------------------------------------------------------------- |
 | **Game**     | id, title, year, genre, platforms, score, imgUrl, shortDescription, longDescription |
 | **GameList** | id, name                                                                            |
 
 ---
 
-### Relacionamento
+### Relationship
 
-![Diagrama do Projeto](docs/dslist-model.png)
-
+![Project Diagram](docs/dslist-model.png)
 
 ---
 
-## 🌐 Deploy
+## 🌐 Deployment
 
-O deploy é automatizado via CI/CD pela plataforma Railway. A cada push na branch principal (`main`), o projeto é redeployado automaticamente.
+Deployment is automated via CI/CD using the Railway platform. Every push to the main branch (`main`) triggers an automatic redeploy.
 
 ---
